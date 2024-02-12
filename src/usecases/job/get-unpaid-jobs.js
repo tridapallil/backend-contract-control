@@ -11,7 +11,7 @@ const getUnpaidJobs = async (req) => {
         model: Contract,
         where: {
           [Op.or]: [{ ClientId: profileId }, { ContractorId: profileId }],
-          status: { [Op.ne]: ContractStatus.TERMINATED },
+          status: { [Op.eq]: ContractStatus.IN_PROGRESS },
         },
       },
     ],

@@ -23,19 +23,25 @@ The project requires [Node.js](https://nodejs.org/en/) to be installed. Is recom
 
 1. Start by creating a local repository for this folder.
 
-1. In the repo root directory, run `npm install` to gather all dependencies.
+2. In the repo root directory, run `npm install` to gather all dependencies.
 
-1. Next, `npm run seed` will seed the local SQLite database. **Warning: This will drop the database if it exists**. The database lives in a local file `database.sqlite3`.
+3. Next, `npm run seed` will seed the local SQLite database. **Warning: This will drop the database if it exists**. The database lives in a local file `database.sqlite3`.
 
-1. Then run `npm start` which should start both the server and the React client.
+4. Then run `npm start` which should start both the server and the React client.
 
-❗️ **Make sure you commit all changes to the master branch!**
+5. The server will by running on ```http://localhost:3001```.
 
-## Technical Notes
+6. The swagger ui will be running on ```http://localhost:3001/api-docs```.
 
-- The server is running with [nodemon](https://nodemon.io/) which will automatically restart for you when you modify and save a file.
+7. The tests can be run with ```npm run test```.
 
-- The database provider is SQLite, which will store data in a file local to your repository called `database.sqlite3`. The ORM [Sequelize](http://docs.sequelizejs.com/) is on top of it. You should only have to interact with Sequelize - **please spend some time reading sequelize documentation before starting the exercise.**
 
-- To authenticate users use the `getProfile` middleware that is located under src/middleware/getProfile.js. users are authenticated by passing `profile_id` in the request header. after a user is authenticated his profile will be available under `req.profile`. make sure only users that are on the contract can access their contracts.
-- The server is running on port 3001.
+## Notes
+If there were more time, more things could be done to make the project better. The main things that would be implemented is:
+
+- At this project, was only developed one test to demonstraded that is configured and ready for it. So the next thing would be to make sure that
+100% of the project is full test covered.
+
+- Some validations are important to keep a minimum standard to a project. One example is to add: spellcheck.
+
+- Make some UML diagrams to represent the models and the project architecture.
