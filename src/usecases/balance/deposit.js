@@ -4,6 +4,8 @@ const Sequelize = require('sequelize')
 const isClientProfile = require('../profile/is-client-profile')
 const { fn, col } = Sequelize
 
+const MIN_RATIO = 1.25
+
 const getUnpaidJob = async (profileId) => {
   const result = await Job.findOne({
     attributes: [[fn('SUM', col('price')), 'toPay']],
@@ -25,7 +27,7 @@ const getUnpaidJob = async (profileId) => {
 }
 
 const hasBalance = (unpaidJob, amount) => {
-  if (!unpaidJob || amount > unpaidJob.toPay * 1.25)
+  if (!unpaidJob || amount > unpaidJob.toPay * MIN_RATIO)
     throw new ValidationError('Not enough balance', 400)
 }
 

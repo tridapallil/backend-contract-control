@@ -1,17 +1,17 @@
 const Sequelize = require('sequelize')
+const { ContractStatus } = require('../../constants/contract-status')
+const { Job, Contract } = require('../../model')
 const { Op } = Sequelize
 
 const getUnpaidJobs = async (req) => {
-  const { Job } = req.app.get('models')
-  const { Contract } = req.app.get('models')
   const { id: profileId } = req.profile
   const jobs = await Job.findAll({
     include: [
       {
         model: Contract,
         where: {
-          ClientId: profileId,
-          status: { [Op.ne]: 'terminated' },
+          [Op.or]: [{ ClientId: profileId }, { ContractorId: profileId }],
+          status: { [Op.ne]: ContractStatus.TERMINATED },
         },
       },
     ],

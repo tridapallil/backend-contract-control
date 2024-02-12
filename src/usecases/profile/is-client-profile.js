@@ -1,5 +1,7 @@
+const { ProfileType } = require('../../constants/profile-type')
+
 const isClientProfile = (profile) => {
-  if (profile.type === 'client') return true
+  if (profile.type === ProfileType.CLIENT) return true
   return false
 }
 
