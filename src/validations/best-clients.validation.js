@@ -2,7 +2,6 @@ const yup = require('yup')
 
 const paramsValidation = async (req, res, next) => {
   const model = req.query
-  console.log(model)
   try {
     const schemaValidationLocal = yup.object().shape({
       start: yup.date().required(),

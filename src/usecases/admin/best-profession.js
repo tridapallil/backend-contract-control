@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize')
 const { fn, col, Op } = Sequelize
 const { Job, Contract, Profile } = require('../../model')
+const ValidationError = require('../../classes/ValidationError')
 
 const bestProfession = async req => {
   const { start, end } = req.query
@@ -27,6 +28,7 @@ const bestProfession = async req => {
     order: [[col('totalEarned'), 'DESC']],
     limit: 1,
   })
+  if (!result) throw new ValidationError('No data found', 404)
   return {
     totalEarned: result.dataValues.totalEarned,
     professional: result.dataValues.Contract.Contractor,
