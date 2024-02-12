@@ -1,32 +1,25 @@
 # DEEL BACKEND TASK
 
-💫 Welcome! 🎉
+This project was developed using the best practicies to run a simple api. The main objective of this project is to simulate a contractor api service, where you can
+pay, deposit and get some contract informations.
 
-This backend exercise involves building a Node.js/Express.js app that will serve a REST API. We imagine you should spend around 3 hours at implement this feature.
+## Technologies
+
+Thinking to use the best libs from the market, some of them was choosen, such as:
+
+1. Yup: to validate query params.
+2. Swagger: to documentation and to run the tests with a simple frontend User Interface.
+3. Sequelize: an ORM to deal with database.
+4. Jest: to deal with tests.
+5. ESLint: To lint the code and keep a standard.
 
 ## Data Models
 
 > **All models are defined in src/model.js**
 
-### Profile
-
-A profile can be either a `client` or a `contractor`.
-clients create contracts with contractors. contractor does jobs for clients and get paid.
-Each profile has a balance property.
-
-### Contract
-
-A contract between and client and a contractor.
-Contracts have 3 statuses, `new`, `in_progress`, `terminated`. contracts are considered active only when in status `in_progress`
-Contracts group jobs within them.
-
-### Job
-
-contractor get paid for jobs by clients under a certain contract.
-
 ## Getting Set Up
 
-The exercise requires [Node.js](https://nodejs.org/en/) to be installed. We recommend using the LTS version.
+The project requires [Node.js](https://nodejs.org/en/) to be installed. Is recommended to use the LTS version.
 
 1. Start by creating a local repository for this folder.
 
@@ -46,53 +39,3 @@ The exercise requires [Node.js](https://nodejs.org/en/) to be installed. We reco
 
 - To authenticate users use the `getProfile` middleware that is located under src/middleware/getProfile.js. users are authenticated by passing `profile_id` in the request header. after a user is authenticated his profile will be available under `req.profile`. make sure only users that are on the contract can access their contracts.
 - The server is running on port 3001.
-
-## APIs To Implement
-
-Below is a list of the required API's for the application.
-
-1. **_GET_** `/contracts/:id` - This API is broken 😵! it should return the contract only if it belongs to the profile calling. better fix that!
-
-1. **_GET_** `/contracts` - Returns a list of contracts belonging to a user (client or contractor), the list should only contain non terminated contracts.
-
-1. **_GET_** `/jobs/unpaid` - Get all unpaid jobs for a user (**_either_** a client or contractor), for **_active contracts only_**.
-
-1. **_POST_** `/jobs/:job_id/pay` - Pay for a job, a client can only pay if his balance >= the amount to pay. The amount should be moved from the client's balance to the contractor balance.
-
-1. **_POST_** `/balances/deposit/:userId` - Deposits money into the the the balance of a client, a client can't deposit more than 25% his total of jobs to pay. (at the deposit moment)
-
-1. **_GET_** `/admin/best-profession?start=<date>&end=<date>` - Returns the profession that earned the most money (sum of jobs paid) for any contactor that worked in the query time range.
-
-1. **_GET_** `/admin/best-clients?start=<date>&end=<date>&limit=<integer>` - returns the clients the paid the most for jobs in the query time period. limit query parameter should be applied, default limit is 2.
-
-```
- [
-    {
-        "id": 1,
-        "fullName": "Reece Moyer",
-        "paid" : 100.3
-    },
-    {
-        "id": 200,
-        "fullName": "Debora Martin",
-        "paid" : 99
-    },
-    {
-        "id": 22,
-        "fullName": "Debora Martin",
-        "paid" : 21
-    }
-]
-```
-
-## Going Above and Beyond the Requirements
-
-Given the time expectations of this exercise, we don't expect anyone to submit anything super fancy, but if you find yourself with extra time, any extra credit item(s) that showcase your unique strengths would be awesome! 🙌
-
-It would be great for example if you'd write some unit test / simple frontend demostrating calls to your fresh APIs.
-
-## Submitting the Assignment
-
-When you have finished the assignment, zip your repo (make sure to include .git folder) and send us the zip.
-
-Thank you and good luck! 🙏
