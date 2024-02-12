@@ -1,4 +1,4 @@
-const ValidationError = require('../classes/ValidationError')
+const ValidationError = require('../../classes/ValidationError')
 const Sequelize = require('sequelize')
 const { Contract } = require('../../model')
 const { Op } = Sequelize

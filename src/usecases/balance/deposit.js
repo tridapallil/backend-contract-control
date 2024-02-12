@@ -1,5 +1,5 @@
 const { Job, Contract, Profile } = require('../../model')
-const ValidationError = require('../classes/ValidationError')
+const ValidationError = require('../../classes/ValidationError')
 const Sequelize = require('sequelize')
 const isClientProfile = require('../profile/is-client-profile')
 const { fn, col } = Sequelize
